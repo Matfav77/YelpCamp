@@ -1,14 +1,31 @@
 <% layout("layouts/boilerplate") %>
 
-    <form action="/campgrounds" method="POST">
+    <h1 class="text-center">New Campground</h1>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="POST">
 
-        <label for="title">Enter the campground name:</label>
-        <input type="text" id="title" name="campground[title]">
-        <label for="location"></label>
-        <input type="text" id="location" name="campground[location]">
-        <button>Submit</button>
-    </form>
-
-    <footer>
+            <div class="mb-3"><label class="form-label" for="title">Enter the campground name:</label>
+                <input class="form-control" type="text" id="title" name="campground[title]">
+            </div>
+            <div class="mb-3"><label class="form-label" for="location">Enter the campground location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Campground price:</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" placeholder="0.00" aria-label="price"
+                        name="campground[price]" id="price" aria-describedby="price-label">
+                </div>
+            </div>
+            <div class="mb-3"><label class="form-label" for="image">Enter the URL of the image</label>
+                <input class="form-control" type="text" id="image" name="campground[image]">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Enter the campground description</label>
+                <textarea class="form-control" type="text" id="description" name="campground[description]"></textarea>
+            </div>
+            <button class="btn btn-success mb-5">Submit</button>
+        </form>
         <a href="/campgrounds">Back to all campgrounds</a>
-    </footer>
+    </div>

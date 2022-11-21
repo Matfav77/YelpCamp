@@ -1,18 +1,31 @@
 <% layout("layouts/boilerplate") %>
-    <h1>Here are the details of the <%= campground.title %> campground:</h1>
-    <ul>
-        <li>
-            Location: <%= campground.location %>
-        </li>
-    </ul>
 
-    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-        <button>Delete this campground</button>
-    </form>
-
-    <footer>
-        <ul>
-            <li><a href="/campgrounds/<%= campground._id %>/edit">Edit this campground</a></li>
-            <li><a href="/campgrounds">Back to all campgrounds</a></li>
-        </ul>
-    </footer>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card mb-4" style="width: 18rem;">
+                <img src="<%= campground.image %>" class="card-img-top"
+                    alt="Stock photo to represent the current camping">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= campground.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= campground.description %>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted">
+                        <%= campground.location %>
+                    </li>
+                    <li class="list-group-item">$<%= campground.price %> / night</li>
+                </ul>
+                <div class="card-body">
+                    <a href="/campgrounds/<%= campground._id %>/edit" class="card-link btn btn-info">Edit</a>
+                    <form class="d-inline" action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete campground</button>
+                    </form>
+                    <a href="/campgrounds" class="card-link btn btn-primary mt-3">To all campgrounds</a>
+                </div>
+            </div>
+        </div>
+    </div>
