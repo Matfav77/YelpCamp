@@ -32,10 +32,11 @@ async function getImg() {
 }
 
 const seedDB = async (numberSeeds = 1) => {
-    // await Campground.deleteMany({});
+    await Campground.deleteMany({});
     for (let i = 0; i < Math.min(numberSeeds, 50); i++) { // 50 requests per hour max to the Unsplash API
         const random1000 = Math.floor(Math.random() * 1000);
         const camp = new Campground({
+            author: '63b01286ed50502fef0fe221',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             image: await getImg(),
             title: `${sample(descriptors)} ${sample(places)}`,
