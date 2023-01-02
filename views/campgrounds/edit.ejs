@@ -1,11 +1,9 @@
 <% layout("layouts/boilerplate") %>
     <h1>Edit the <%= campground.title %> campground:</h1>
 
-    <h1 class="text-center">Edit Campground</h1>
     <div class="col-6 offset-3">
         <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form"
             enctype="multipart/form-data">
-
             <div class="mb-3"><label class="form-label" for="title">Edit the campground name:</label>
                 <input class="form-control" type="text" id="title" name="campground[title]"
                     value="<%= campground.title %>" required>
@@ -34,6 +32,15 @@
                 <textarea class="form-control" type="text" id="description" required
                     name="campground[description]"><%= campground.description %></textarea>
                 <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3">
+                <% campground.images.forEach(function (img, i) { %>
+                    <img src=" <%=img.thumbnail%>" alt="" class="img-thumbnail">
+                    <div class="form-check-inline">
+                        <label for="check-img-<%= i %>">Delete image:</label>
+                        <input type="checkbox" name="deleteImages[]" id="check-img-<%= i %>" value="<%= img.filename%>">
+                    </div>
+                    <% }) %>
             </div>
             <button class="btn btn-info mb-2">Edit campground</button>
             <a href="/campgrounds/<%= campground._id %>" class="btn btn-success mb-2">Cancel and go back to campground
