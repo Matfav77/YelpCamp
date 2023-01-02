@@ -38,7 +38,16 @@ const seedDB = async (numberSeeds = 1) => {
         const camp = new Campground({
             author: '63b01286ed50502fef0fe221',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
-            image: await getImg(),
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dkgjp7bfh/image/upload/v1672668786/Yelpcamp/iiqlw8vyyrfmxjhhmmbk.jpg',
+                    filename: 'Yelpcamp/iiqlw8vyyrfmxjhhmmbk'
+                },
+                {
+                    url: 'https://res.cloudinary.com/dkgjp7bfh/image/upload/v1672668786/Yelpcamp/qwjmwt6mokvkbsy2ezlh.jpg',
+                    filename: 'Yelpcamp/qwjmwt6mokvkbsy2ezlh'
+                }
+            ],
             title: `${sample(descriptors)} ${sample(places)}`,
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo eaque explicabo exercitationem modi praesentium impedit sapiente ipsum quam libero obcaecati, id doloremque aperiam architecto ad hic eius corrupti. Maiores, libero.",
             price: Math.floor(Math.random() * 20) + 10
@@ -47,6 +56,6 @@ const seedDB = async (numberSeeds = 1) => {
     }
 };
 
-seedDB().then(() => {
+seedDB(50).then(() => {
     mongoose.connection.close();
 });
