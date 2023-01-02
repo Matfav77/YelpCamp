@@ -5,7 +5,7 @@ module.exports.showAllCampgrounds = async (req, res) => {
     res.render("campgrounds/index", { campgrounds });
 }
 
-module.exports.showCreationForm = (req, res) => {
+module.exports.renderCreationForm = (req, res) => {
     res.render("campgrounds/new");
 }
 
@@ -27,7 +27,7 @@ module.exports.showOneCampground = async (req, res) => {
     res.render("campgrounds/show", { campground })
 }
 
-module.exports.showEditForm = async (req, res) => {
+module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
     if (!campground) {
