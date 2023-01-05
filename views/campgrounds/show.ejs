@@ -1,5 +1,6 @@
 <% layout("layouts/boilerplate") %>
     <link rel="stylesheet" href="/stylesheets/starRating.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
 
     <div class="row">
         <div class="col-6">
@@ -61,7 +62,7 @@
             </div>
         </div>
         <div class="col-6">
-            <div id='map' style='width: 400px; height: 300px;' class="mb-3 ms-auto me-auto"></div>
+            <div id='show-map' class="mb-3 ms-auto me-auto"></div>
             <h2>Leave a review</h2>
             <% if (currentUser) { %>
                 <form action="/campgrounds/<%= campground._id %>/reviews" class="mb-3 validated-form" novalidate

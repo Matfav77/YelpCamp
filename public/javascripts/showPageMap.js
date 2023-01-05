@@ -1,9 +1,9 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
-    container: 'map',
+    container: 'show-map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: campground.geometry.coordinates,
-    zoom: 8
+    zoom: 7
 });
 
 const campgroundMarker = new mapboxgl.Marker()
