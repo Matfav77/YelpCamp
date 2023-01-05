@@ -3,8 +3,10 @@ const map = new mapboxgl.Map({
     container: 'show-map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: campground.geometry.coordinates,
-    zoom: 7
+    zoom: 8
 });
+
+map.addControl(new mapboxgl.NavigationControl());
 
 const campgroundMarker = new mapboxgl.Marker()
     .setLngLat(campground.geometry.coordinates)
