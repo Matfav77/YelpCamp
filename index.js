@@ -38,6 +38,7 @@ const sessionConfig = {
     store: MongoStore.create({
         mongoUrl: dbUrl,
         touchAfter: 24 * 3600,
+        secret: process.env.SECRET
     }),
     resave: false,
     saveUninitialized: true,
