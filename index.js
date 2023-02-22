@@ -32,6 +32,9 @@ db.once("open", () => {
 });
 
 const app = express();
+
+app.set('trust proxy', 1); // trust first proxy
+
 const sessionConfig = {
     name: 'session',
     secret: process.env.SECRET,
