@@ -22,9 +22,8 @@ const authRoutes = require("./routes/auth");
 const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/review");
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
 mongoose.connect(dbUrl);
-// mongoose.connect("mongodb://localhost:27017/yelp-camp");
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -44,7 +43,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,   TO BE ADDED IN PRODUCTION, WON'T WORK LOCALLY
+        secure: true,   // TO BE ADDED IN PRODUCTION, WON'T WORK LOCALLY
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -109,8 +108,6 @@ app.use(
         },
     })
 );
-
-
 
 
 app.use(express.static(path.join(__dirname, "public")));
