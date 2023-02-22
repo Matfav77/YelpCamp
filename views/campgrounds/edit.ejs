@@ -1,5 +1,5 @@
 <% layout("layouts/boilerplate") %>
-    <h1>Edit the <%= campground.title %> campground:</h1>
+    <h1 class="text-center mb-5">Edit the <%= campground.title %> campground:</h1>
 
     <div class="col-6 offset-3">
         <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form"
@@ -27,18 +27,21 @@
             <div class="mb-3"><label class="form-label" for="image">Add images:</label>
                 <input class="form-control" type="file" name="image" id="image" multiple>
             </div>
-            <div class="mb-3">
+            <div class="mb-5">
                 <label class="form-label" for="description">Edit the campground description</label>
                 <textarea class="form-control" type="text" id="description" required
                     name="campground[description]"><%= campground.description %></textarea>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="mb-3">
+            <div class="mb-5">
                 <% campground.images.forEach(function (img, i) { %>
-                    <img src=" <%=img.thumbnail%>" alt="" class="img-thumbnail">
-                    <div class="form-check-inline">
-                        <label for="check-img-<%= i %>">Delete image:</label>
-                        <input type="checkbox" name="deleteImages[]" id="check-img-<%= i %>" value="<%= img.filename%>">
+                    <div class="d-flex align-items-center">
+                        <img src=" <%=img.thumbnail%>" alt="" class="img-thumbnail me-2">
+                        <div class="form-check-inline">
+                            <label for="check-img-<%= i %>">Delete image:</label>
+                            <input type="checkbox" name="deleteImages[]" id="check-img-<%= i %>"
+                                value="<%= img.filename%>">
+                        </div>
                     </div>
                     <% }) %>
             </div>
