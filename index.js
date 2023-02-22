@@ -23,8 +23,8 @@ const campgroundRoutes = require("./routes/campground");
 const reviewRoutes = require("./routes/review");
 
 const dbUrl = process.env.DB_URL;
-// mongoose.connect(dbUrl);
-mongoose.connect("mongodb://localhost:27017/yelp-camp");
+mongoose.connect(dbUrl);
+// mongoose.connect("mongodb://localhost:27017/yelp-camp");
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -37,9 +37,8 @@ const sessionConfig = {
     name: 'session',
     secret: process.env.SECRET,
     store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/yelp-camp",
+        mongoUrl: dbUrl,
         touchAfter: 24 * 3600,
-
     }),
     resave: false,
     saveUninitialized: true,
