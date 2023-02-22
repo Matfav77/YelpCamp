@@ -153,7 +153,7 @@ if (port == null || port == "") {
     port = 3000;
 }
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
     console.log("Listening on port 3000")
 });
 

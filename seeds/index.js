@@ -36,7 +36,7 @@ const seedDB = async (numberSeeds = 1) => {
     for (let i = 0; i < Math.min(numberSeeds, 50); i++) { // 50 requests per hour max to the Unsplash API
         const random1000 = Math.floor(Math.random() * 1000);
         const camp = new Campground({
-            author: '63b01286ed50502fef0fe221',
+            author: '63f5cf5eae3f99bd6cc95c75',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             geometry: {
                 type: 'Point',
